@@ -11,7 +11,7 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("backgroundColour")
+                Color("authBackgroundColour")
                     .edgesIgnoringSafeArea(.all)
                 // show loading screen before proceeding to the next view for firebase to be able to load data
                 if loginViewModel.isLoading {
