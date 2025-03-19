@@ -1,0 +1,644 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		604B1D8F2D8B57330057DD7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 604B1D8E2D8B57330057DD7E /* GoogleService-Info.plist */; };
+		608C9EA22D88FE3200C87774 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 608C9EA12D88FE3200C87774 /* FirebaseAuth */; };
+		608C9EA42D88FE3200C87774 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 608C9EA32D88FE3200C87774 /* FirebaseCore */; };
+		608C9EA62D88FE3200C87774 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 608C9EA52D88FE3200C87774 /* FirebaseDatabase */; };
+		608C9EA82D88FE3200C87774 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 608C9EA72D88FE3200C87774 /* FirebaseFirestore */; };
+		608C9EAA2D88FE3200C87774 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 608C9EA92D88FE3200C87774 /* FirebaseMessaging */; };
+		608C9EAC2D88FE3200C87774 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 608C9EAB2D88FE3200C87774 /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		601BEA372D88FBBE000BDF07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 601BEA1E2D88FBBD000BDF07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 601BEA252D88FBBD000BDF07;
+			remoteInfo = mentalAppCoursework;
+		};
+		601BEA412D88FBBE000BDF07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 601BEA1E2D88FBBD000BDF07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 601BEA252D88FBBD000BDF07;
+			remoteInfo = mentalAppCoursework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		601BEA362D88FBBE000BDF07 /* mentalAppCourseworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mentalAppCourseworkTests.xctest; path = "/Users/vladafursa/IOS_NTU/mentalAppCoursework/build/Debug-iphoneos/mentalAppCoursework.app/PlugIns/mentalAppCourseworkTests.xctest"; sourceTree = "<absolute>"; };
+		601BEA402D88FBBE000BDF07 /* mentalAppCourseworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mentalAppCourseworkUITests.xctest; path = "/Users/vladafursa/IOS_NTU/mentalAppCoursework/build/Debug-iphoneos/mentalAppCourseworkUITests-Runner.app/PlugIns/mentalAppCourseworkUITests.xctest"; sourceTree = "<absolute>"; };
+		604B1D8E2D8B57330057DD7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		604B1D902D8B57840057DD7E /* mentalAppCoursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mentalAppCoursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		604B1D932D8B578A0057DD7E /* Exceptions for "mentalAppCoursework" folder in "mentalAppCoursework" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 601BEA252D88FBBD000BDF07 /* mentalAppCoursework */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		601BEA282D88FBBD000BDF07 /* mentalAppCoursework */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				604B1D932D8B578A0057DD7E /* Exceptions for "mentalAppCoursework" folder in "mentalAppCoursework" target */,
+			);
+			path = mentalAppCoursework;
+			sourceTree = "<group>";
+		};
+		601BEA392D88FBBE000BDF07 /* mentalAppCourseworkTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = mentalAppCourseworkTests;
+			sourceTree = "<group>";
+		};
+		601BEA432D88FBBE000BDF07 /* mentalAppCourseworkUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = mentalAppCourseworkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		601BEA232D88FBBD000BDF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				608C9EA62D88FE3200C87774 /* FirebaseDatabase in Frameworks */,
+				608C9EA82D88FE3200C87774 /* FirebaseFirestore in Frameworks */,
+				608C9EAA2D88FE3200C87774 /* FirebaseMessaging in Frameworks */,
+				608C9EA42D88FE3200C87774 /* FirebaseCore in Frameworks */,
+				608C9EA22D88FE3200C87774 /* FirebaseAuth in Frameworks */,
+				608C9EAC2D88FE3200C87774 /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		601BEA332D88FBBE000BDF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		601BEA3D2D88FBBE000BDF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		601BEA1D2D88FBBD000BDF07 = {
+			isa = PBXGroup;
+			children = (
+				601BEA282D88FBBD000BDF07 /* mentalAppCoursework */,
+				601BEA392D88FBBE000BDF07 /* mentalAppCourseworkTests */,
+				601BEA432D88FBBE000BDF07 /* mentalAppCourseworkUITests */,
+				604B1D902D8B57840057DD7E /* mentalAppCoursework.app */,
+				604B1D8E2D8B57330057DD7E /* GoogleService-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		601BEA252D88FBBD000BDF07 /* mentalAppCoursework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 601BEA4A2D88FBBE000BDF07 /* Build configuration list for PBXNativeTarget "mentalAppCoursework" */;
+			buildPhases = (
+				601BEA222D88FBBD000BDF07 /* Sources */,
+				601BEA232D88FBBD000BDF07 /* Frameworks */,
+				601BEA242D88FBBD000BDF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				601BEA282D88FBBD000BDF07 /* mentalAppCoursework */,
+			);
+			name = mentalAppCoursework;
+			packageProductDependencies = (
+				608C9EA12D88FE3200C87774 /* FirebaseAuth */,
+				608C9EA32D88FE3200C87774 /* FirebaseCore */,
+				608C9EA52D88FE3200C87774 /* FirebaseDatabase */,
+				608C9EA72D88FE3200C87774 /* FirebaseFirestore */,
+				608C9EA92D88FE3200C87774 /* FirebaseMessaging */,
+				608C9EAB2D88FE3200C87774 /* FirebaseStorage */,
+			);
+			productName = mentalAppCoursework;
+			productReference = 604B1D902D8B57840057DD7E /* mentalAppCoursework.app */;
+			productType = "com.apple.product-type.application";
+		};
+		601BEA352D88FBBE000BDF07 /* mentalAppCourseworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 601BEA4D2D88FBBE000BDF07 /* Build configuration list for PBXNativeTarget "mentalAppCourseworkTests" */;
+			buildPhases = (
+				601BEA322D88FBBE000BDF07 /* Sources */,
+				601BEA332D88FBBE000BDF07 /* Frameworks */,
+				601BEA342D88FBBE000BDF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				601BEA382D88FBBE000BDF07 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				601BEA392D88FBBE000BDF07 /* mentalAppCourseworkTests */,
+			);
+			name = mentalAppCourseworkTests;
+			packageProductDependencies = (
+			);
+			productName = mentalAppCourseworkTests;
+			productReference = 601BEA362D88FBBE000BDF07 /* mentalAppCourseworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		601BEA3F2D88FBBE000BDF07 /* mentalAppCourseworkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 601BEA502D88FBBE000BDF07 /* Build configuration list for PBXNativeTarget "mentalAppCourseworkUITests" */;
+			buildPhases = (
+				601BEA3C2D88FBBE000BDF07 /* Sources */,
+				601BEA3D2D88FBBE000BDF07 /* Frameworks */,
+				601BEA3E2D88FBBE000BDF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				601BEA422D88FBBE000BDF07 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				601BEA432D88FBBE000BDF07 /* mentalAppCourseworkUITests */,
+			);
+			name = mentalAppCourseworkUITests;
+			packageProductDependencies = (
+			);
+			productName = mentalAppCourseworkUITests;
+			productReference = 601BEA402D88FBBE000BDF07 /* mentalAppCourseworkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		601BEA1E2D88FBBD000BDF07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					601BEA252D88FBBD000BDF07 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					601BEA352D88FBBE000BDF07 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 601BEA252D88FBBD000BDF07;
+					};
+					601BEA3F2D88FBBE000BDF07 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 601BEA252D88FBBD000BDF07;
+					};
+				};
+			};
+			buildConfigurationList = 601BEA212D88FBBD000BDF07 /* Build configuration list for PBXProject "mentalAppCoursework" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 601BEA1D2D88FBBD000BDF07;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 601BEA1D2D88FBBD000BDF07;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				601BEA252D88FBBD000BDF07 /* mentalAppCoursework */,
+				601BEA352D88FBBE000BDF07 /* mentalAppCourseworkTests */,
+				601BEA3F2D88FBBE000BDF07 /* mentalAppCourseworkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		601BEA242D88FBBD000BDF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604B1D8F2D8B57330057DD7E /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		601BEA342D88FBBE000BDF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		601BEA3E2D88FBBE000BDF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		601BEA222D88FBBD000BDF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		601BEA322D88FBBE000BDF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		601BEA3C2D88FBBE000BDF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		601BEA382D88FBBE000BDF07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 601BEA252D88FBBD000BDF07 /* mentalAppCoursework */;
+			targetProxy = 601BEA372D88FBBE000BDF07 /* PBXContainerItemProxy */;
+		};
+		601BEA422D88FBBE000BDF07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 601BEA252D88FBBD000BDF07 /* mentalAppCoursework */;
+			targetProxy = 601BEA412D88FBBE000BDF07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		601BEA482D88FBBE000BDF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		601BEA492D88FBBE000BDF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		601BEA4B2D88FBBE000BDF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = mentalAppCoursework/mentalAppCoursework.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mentalAppCoursework/Preview Content\"";
+				DEVELOPMENT_TEAM = W9GHU8Z389;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mentalAppCoursework/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentalAppCoursework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		601BEA4C2D88FBBE000BDF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = mentalAppCoursework/mentalAppCoursework.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mentalAppCoursework/Preview Content\"";
+				DEVELOPMENT_TEAM = W9GHU8Z389;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mentalAppCoursework/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentalAppCoursework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		601BEA4E2D88FBBE000BDF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9GHU8Z389;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentalAppCourseworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mentalAppCoursework.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mentalAppCoursework";
+			};
+			name = Debug;
+		};
+		601BEA4F2D88FBBE000BDF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9GHU8Z389;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentalAppCourseworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mentalAppCoursework.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mentalAppCoursework";
+			};
+			name = Release;
+		};
+		601BEA512D88FBBE000BDF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9GHU8Z389;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentalAppCourseworkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mentalAppCoursework;
+			};
+			name = Debug;
+		};
+		601BEA522D88FBBE000BDF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9GHU8Z389;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentalAppCourseworkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mentalAppCoursework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		601BEA212D88FBBD000BDF07 /* Build configuration list for PBXProject "mentalAppCoursework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				601BEA482D88FBBE000BDF07 /* Debug */,
+				601BEA492D88FBBE000BDF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		601BEA4A2D88FBBE000BDF07 /* Build configuration list for PBXNativeTarget "mentalAppCoursework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				601BEA4B2D88FBBE000BDF07 /* Debug */,
+				601BEA4C2D88FBBE000BDF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		601BEA4D2D88FBBE000BDF07 /* Build configuration list for PBXNativeTarget "mentalAppCourseworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				601BEA4E2D88FBBE000BDF07 /* Debug */,
+				601BEA4F2D88FBBE000BDF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		601BEA502D88FBBE000BDF07 /* Build configuration list for PBXNativeTarget "mentalAppCourseworkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				601BEA512D88FBBE000BDF07 /* Debug */,
+				601BEA522D88FBBE000BDF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		608C9EA12D88FE3200C87774 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		608C9EA32D88FE3200C87774 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		608C9EA52D88FE3200C87774 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		608C9EA72D88FE3200C87774 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		608C9EA92D88FE3200C87774 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		608C9EAB2D88FE3200C87774 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608C9EA02D88FE3200C87774 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 601BEA1E2D88FBBD000BDF07 /* Project object */;
+}
