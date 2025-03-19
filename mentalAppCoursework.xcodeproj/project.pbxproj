@@ -34,10 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		601BEA362D88FBBE000BDF07 /* mentalAppCourseworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mentalAppCourseworkTests.xctest; path = "/Users/vladafursa/IOS_NTU/mentalAppCoursework/build/Debug-iphoneos/mentalAppCoursework.app/PlugIns/mentalAppCourseworkTests.xctest"; sourceTree = "<absolute>"; };
-		601BEA402D88FBBE000BDF07 /* mentalAppCourseworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mentalAppCourseworkUITests.xctest; path = "/Users/vladafursa/IOS_NTU/mentalAppCoursework/build/Debug-iphoneos/mentalAppCourseworkUITests-Runner.app/PlugIns/mentalAppCourseworkUITests.xctest"; sourceTree = "<absolute>"; };
 		604B1D8E2D8B57330057DD7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		604B1D902D8B57840057DD7E /* mentalAppCoursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mentalAppCoursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		604B1DDA2D8B838F0057DD7E /* mentalAppCourseworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mentalAppCourseworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		604B1DDB2D8B838F0057DD7E /* mentalAppCourseworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mentalAppCourseworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -110,6 +110,8 @@
 				601BEA432D88FBBE000BDF07 /* mentalAppCourseworkUITests */,
 				604B1D902D8B57840057DD7E /* mentalAppCoursework.app */,
 				604B1D8E2D8B57330057DD7E /* GoogleService-Info.plist */,
+				604B1DDA2D8B838F0057DD7E /* mentalAppCourseworkTests.xctest */,
+				604B1DDB2D8B838F0057DD7E /* mentalAppCourseworkUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,7 +166,7 @@
 			packageProductDependencies = (
 			);
 			productName = mentalAppCourseworkTests;
-			productReference = 601BEA362D88FBBE000BDF07 /* mentalAppCourseworkTests.xctest */;
+			productReference = 604B1DDA2D8B838F0057DD7E /* mentalAppCourseworkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		601BEA3F2D88FBBE000BDF07 /* mentalAppCourseworkUITests */ = {
@@ -187,7 +189,7 @@
 			packageProductDependencies = (
 			);
 			productName = mentalAppCourseworkUITests;
-			productReference = 601BEA402D88FBBE000BDF07 /* mentalAppCourseworkUITests.xctest */;
+			productReference = 604B1DDB2D8B838F0057DD7E /* mentalAppCourseworkUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
