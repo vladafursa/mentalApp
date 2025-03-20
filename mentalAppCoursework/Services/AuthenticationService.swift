@@ -52,10 +52,12 @@ final class AuthenticationService: ObservableObject {
         }
     }
 
+    // getting current user ID for future usage
     func getCurrentUserUID() -> String? {
         return currentUser?.uid
     }
 
+    // changing password by sending the built-in verification link
     func forgotPassword(email: String) async throws {
         try await auth.sendPasswordReset(withEmail: email)
     }
