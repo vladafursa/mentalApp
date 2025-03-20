@@ -11,7 +11,6 @@ class HomeViewModel: ObservableObject {
     @Published var alertMessage = ""
     @Published var hasSubmitted: Bool = false
     @Published var username: String = "User"
-
     // calling service to get username, if not succesfull use just User
     func findUserName() {
         Task {

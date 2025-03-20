@@ -66,4 +66,35 @@ class FirestoreService: ObservableObject {
             throw error
         }
     }
+
+    func fetchSpecificDiaryEntry(date: Date) async throws -> DiaryEntry? {
+        guard let user = Auth.auth().currentUser else {
+            return nil
+        }
+        let uid = user.uid
+        var calendar = Calendar.current
+        let selectedDate = calendar.date(bySettingHour: 10, minute: 0, second: 0, of: date) ?? date
+        let query =
+            db.collection("users").document(uid).collection("diary")
+                .whereField("date", isEqualTo: selectedDate)
+
+        let snapshot = try await query.getDocuments(source: .server)
+
+        if let document = snapshot.documents.first {
+            let data = document.data()
+            if let feelings = data["feelings"] as? String,
+               let dateTimestamp = data["date"] as? Timestamp,
+               let happinessScore = data["happinessRate"] as? Int
+            {
+                let date = dateTimestamp.dateValue()
+                let diaryEntry = DiaryEntry(date: date, feelings: feelings, happinessScore: happinessScore)
+                print("fetched data: \(diaryEntry.date)")
+                return diaryEntry
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
 }
