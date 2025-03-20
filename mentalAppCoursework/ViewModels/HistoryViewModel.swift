@@ -69,6 +69,20 @@ class HistoryViewModel: ObservableObject {
     }
 
     func CreatePDF() {
-        FileManagementService.shared.createPDF(entries: diary)
+        if let url =
+            FileManagementService.shared.createPDF(entries: diary)
+        {
+            DispatchQueue.main.async {
+                self.alertTitle = "Success"
+                self.alertMessage = "you can find your pdf in downloads"
+                self.showAlert = true
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.alertTitle = "Error"
+                self.alertMessage = "couldn't download pdf"
+                self.showAlert = true
+            }
+        }
     }
 }
