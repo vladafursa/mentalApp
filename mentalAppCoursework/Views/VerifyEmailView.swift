@@ -39,6 +39,7 @@ struct VerifyEmailView: View {
                             .autocapitalization(.none)
                             .font(.system(size: 22))
                             .underline()
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: .infinity)
                         }
 
@@ -57,12 +58,12 @@ struct VerifyEmailView: View {
                     }
 
                     .padding()
-                    .frame(width: 340, height: 220)
+                    .frame(width: 340, height: 210)
                     .background(Color.white)
                     .cornerRadius(30)
                     .shadow(radius: 5)
                 }
-                .offset(y: -80)
+                .offset(y: -100)
                 Spacer()
             }
             .padding()

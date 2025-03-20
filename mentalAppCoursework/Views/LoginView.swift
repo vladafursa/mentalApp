@@ -49,6 +49,7 @@ struct LoginView: View {
                                     .autocapitalization(.none)
                                     .font(.system(size: 22))
                                     .underline()
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .frame(maxWidth: .infinity)
                                 }
 
@@ -64,6 +65,7 @@ struct LoginView: View {
                                     .disableAutocorrection(true)
                                     .font(.system(size: 22))
                                     .underline()
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .frame(maxWidth: .infinity)
                                 }
                                 .padding(.bottom)

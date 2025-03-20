@@ -138,12 +138,12 @@ struct RegisterView: View {
                             .shadow(radius: 5)
                         }
                         .padding()
-                        .frame(width: 340, height: 440)
+                        .frame(width: 340, height: 430)
                         .background(Color.white)
                         .cornerRadius(30)
                         .shadow(radius: 5)
                     }
-                    .offset(y: -80)
+                    .offset(y: -100)
                 }
                 .padding()
             }
