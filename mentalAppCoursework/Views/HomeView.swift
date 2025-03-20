@@ -29,12 +29,14 @@ struct HomeView: View {
                             .foregroundColor(.titleColour)
                             .padding()
                     }
-
-                    Image("appLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 300, alignment: .topLeading)
-                        .padding(.bottom, 40)
+                    ZStack {
+                        Image("appLogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 300, alignment: .topLeading)
+                            .padding(.bottom, 40)
+                    }
+                    .offset(y: -60)
                     Spacer()
                 }
 
@@ -45,7 +47,7 @@ struct HomeView: View {
                     }
                 } else {
                     VStack {
-                        VStack(spacing: 10) {
+                        VStack(spacing: 20) {
                             HStack {
                                 Text("\(homeViewModel.username) , tell me how you feel today")
                                     .font(.system(size: 22))
@@ -146,7 +148,6 @@ struct HomeView: View {
                     .onTapGesture {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
-                    .padding(.top, 70)
                 }
             }
         }
