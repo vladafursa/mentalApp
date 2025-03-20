@@ -32,25 +32,16 @@ final class AuthenticationService: ObservableObject {
 
     // login function
     func login(email: String, password: String) async throws {
-        do {
-            let result = try await auth.signIn(withEmail: email, password: password)
-            DispatchQueue.main.async {
-                self.currentUser = result.user
-            }
-            // throwing error to be caught in ViewModel
-        } catch {
-            throw error
+        let result = try await auth.signIn(withEmail: email, password: password)
+        DispatchQueue.main.async {
+            self.currentUser = result.user
         }
     }
 
     // register function: adding to authentication and users database
     func register(name: String, email: String, password: String, age: Int) async throws {
-        do {
-            let result = try await auth.createUser(withEmail: email, password: password)
-            try await firestoreService.registerUser(uid: result.user.uid, email: email, name: name, age: age)
-        } catch {
-            throw error
-        }
+        let result = try await auth.createUser(withEmail: email, password: password)
+        try await firestoreService.registerUser(uid: result.user.uid, email: email, name: name, age: age)
     }
 
     // signing user out
@@ -64,22 +55,8 @@ final class AuthenticationService: ObservableObject {
     func getCurrentUserUID() -> String? {
         return currentUser?.uid
     }
-    /*
 
-        func forgotPassword(email: String) async throws {
-            do {
-                try await auth.sendPasswordReset(withEmail: email)
-                DispatchQueue.main.async {
-                    self.showAlert = true
-                    self.alertTitle = "Email sent successfully"
-                    self.alertMessage = "Email was sent to your inbox, check and press the link"
-                }
-            } catch {
-                alertTitle = "Unsuccessful verification"
-                showAlert = true
-                alertMessage = error.localizedDescription
-            }
-        }
-
-     */
+    func forgotPassword(email: String) async throws {
+        try await auth.sendPasswordReset(withEmail: email)
+    }
 }

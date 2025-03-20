@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct VerifyEmailView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-    //   @StateObject private var authService = AuthenticationService.shared
+    @StateObject private var loginViewModel = LoginViewModel()
     var body: some View {
         ZStack {
             Color("backgroundColour")
@@ -35,7 +33,7 @@ struct VerifyEmailView: View {
 
                             TextField(
                                 "example@gmail.com",
-                                text: $username
+                                text: $loginViewModel.email
                             )
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
@@ -46,14 +44,16 @@ struct VerifyEmailView: View {
 
                         .padding(.bottom)
 
-                        Button("Verify") {}
-                            .font(.system(size: 18))
-                            .foregroundColor(.white)
-                            .bold()
-                            .padding(12)
-                            .background(.buttonColour)
-                            .cornerRadius(7)
-                            .shadow(radius: 5)
+                        Button("Verify") {
+                            loginViewModel.forgotPassword()
+                        }
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding(12)
+                        .background(.buttonColour)
+                        .cornerRadius(7)
+                        .shadow(radius: 5)
                     }
 
                     .padding()
@@ -66,6 +66,13 @@ struct VerifyEmailView: View {
                 Spacer()
             }
             .padding()
+        }
+        .alert(isPresented: $loginViewModel.showAlert) {
+            Alert(
+                title: Text(loginViewModel.alertTitle ?? "Unsuccessful login"),
+                message: Text(loginViewModel.alertMessage ?? "An unknown error occurred"),
+                dismissButton: .default(Text("try again"))
+            )
         }
     }
 }

@@ -45,7 +45,31 @@ class LoginViewModel: ObservableObject {
         clearFields()
     }
 
-    // clearing input fields
+    func forgotPassword() {
+        isLoading = true
+
+        Task {
+            do {
+                try await AuthenticationService.shared.forgotPassword(email: email)
+
+                DispatchQueue.main.async {
+                    self.showAlert = true
+                    self.alertTitle = "Email sent successfully"
+                    self.alertMessage = "Email was sent to your inbox, check and press the link"
+                    self.isLoading = false
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.showAlert = true
+                    self.alertTitle = "Unsuccessful verification"
+                    self.alertMessage = error.localizedDescription
+                    self.isLoading = false
+                }
+            }
+        }
+        clearFields()
+    }
+
     func clearFields() {
         DispatchQueue.main.async {
             self.email = ""
