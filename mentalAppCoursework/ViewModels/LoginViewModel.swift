@@ -85,4 +85,12 @@ class LoginViewModel: ObservableObject {
             UIApplication.shared.open(numberUrl)
         }
     }
+
+    func logout() {
+        Task {
+            do {
+                try await AuthenticationService.shared.signOut()
+            } catch {}
+        }
+    }
 }

@@ -131,6 +131,9 @@ struct LoginView: View {
             }
             .navigationDestination(isPresented: $loginViewModel.isLoggedIn) { ContentView() }
         }
+        .onAppear {
+            loginViewModel.logout()
+        }
         // presenting alert
         .alert(isPresented: $loginViewModel.showAlert) {
             Alert(

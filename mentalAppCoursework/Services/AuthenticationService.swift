@@ -45,8 +45,8 @@ final class AuthenticationService: ObservableObject {
     }
 
     // signing user out
-    func signOut() throws {
-        try auth.signOut()
+    func signOut() async throws {
+        try await auth.signOut()
         DispatchQueue.main.async {
             self.currentUser = nil
         }

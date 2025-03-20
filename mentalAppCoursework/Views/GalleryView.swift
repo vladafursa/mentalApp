@@ -35,9 +35,7 @@ struct GalleryView: View {
                                             if let image = UIImage(contentsOfFile: url.path) {
                                                 Image(uiImage: image)
                                                     .resizable()
-                                                    .aspectRatio(contentMode: .fill)
                                                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                                    .clipped()
                                                     .aspectRatio(1, contentMode: .fit)
                                                     .onTapGesture {
                                                         selectedImage = image
@@ -48,7 +46,7 @@ struct GalleryView: View {
                                     .padding()
                                 }
                             }
-                            .offset(y: -200)
+                            .offset(y: -250)
                         }
                     }
                 }
