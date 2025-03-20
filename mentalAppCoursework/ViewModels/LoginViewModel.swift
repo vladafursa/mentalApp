@@ -12,7 +12,7 @@ class LoginViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var alertTitle: String?
 
-    // calling service to caught errors, change states and show alerts
+    // calling service to caught errors, change states in the main thread and show alerts
     func login() {
         isLoading = true
         Task {
@@ -45,13 +45,12 @@ class LoginViewModel: ObservableObject {
         clearFields()
     }
 
+    // calling service to caught errors, change states and show alerts
     func forgotPassword() {
         isLoading = true
-
         Task {
             do {
                 try await AuthenticationService.shared.forgotPassword(email: email)
-
                 DispatchQueue.main.async {
                     self.showAlert = true
                     self.alertTitle = "Email sent successfully"
@@ -70,10 +69,10 @@ class LoginViewModel: ObservableObject {
         clearFields()
     }
 
+    // emptying input fields
     func clearFields() {
         DispatchQueue.main.async {
             self.email = ""
-
             self.password = ""
         }
     }
