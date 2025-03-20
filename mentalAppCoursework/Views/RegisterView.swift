@@ -5,19 +5,12 @@ import FirebaseFirestore
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var username: String = ""
-    @State private var email: String = ""
-    @State private var age: Int = 0
-    @State private var password: String = ""
-    @State private var repeatedPassword: String = ""
-    // @StateObject private var firestoreService = FirestoreService.shared
-    // @StateObject private var authService = AuthenticationService.shared
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var registerViewModel = RegisterViewModel()
     var body: some View {
         ZStack {
             Color("backgroundColour")
                 .edgesIgnoringSafeArea(.all)
-            if loginViewModel.isLoading {
+            if registerViewModel.isLoading {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .scaleEffect(3)
@@ -56,7 +49,7 @@ struct RegisterView: View {
 
                                 TextField(
                                     "John Doe",
-                                    text: $username
+                                    text: $registerViewModel.username
                                 )
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
@@ -74,7 +67,7 @@ struct RegisterView: View {
 
                                 TextField(
                                     "email@gmail.com",
-                                    text: $email
+                                    text: $registerViewModel.email
                                 )
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
@@ -89,10 +82,10 @@ struct RegisterView: View {
                                     .foregroundColor(.textColour)
                                     .frame(maxWidth: 100, alignment: .leading)
 
-                                TextField("Type age", value: $age, format: .number)
+                                TextField("Type age", value: $registerViewModel.age, format: .number)
                                     .keyboardType(.numberPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(registerViewModel.age > 0 ? .black : .gray)
                             }
 
                             HStack {
@@ -101,9 +94,9 @@ struct RegisterView: View {
                                     .foregroundColor(.textColour)
                                     .frame(maxWidth: 100, alignment: .leading)
 
-                                TextField(
+                                SecureField(
                                     "pasSword2#",
-                                    text: $password
+                                    text: $registerViewModel.password
                                 )
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
@@ -119,9 +112,9 @@ struct RegisterView: View {
                                     .frame(maxWidth: 100, alignment: .leading)
                                     .lineLimit(nil)
                                     .fixedSize(horizontal: false, vertical: true)
-                                TextField(
+                                SecureField(
                                     "pasSword2#",
-                                    text: $repeatedPassword
+                                    text: $registerViewModel.repeatedPassword
                                 )
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
@@ -132,15 +125,17 @@ struct RegisterView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             }
 
-                            Button("Join now!") {}
+                            Button("Join now!") {
+                                registerViewModel.register()
+                            }
 
-                                .font(.system(size: 18))
-                                .foregroundColor(.white)
-                                .bold()
-                                .padding(12)
-                                .background(.buttonColour)
-                                .cornerRadius(7)
-                                .shadow(radius: 5)
+                            .font(.system(size: 18))
+                            .foregroundColor(.white)
+                            .bold()
+                            .padding(12)
+                            .background(.buttonColour)
+                            .cornerRadius(7)
+                            .shadow(radius: 5)
                         }
                         .padding()
                         .frame(width: 340, height: 440)
@@ -152,6 +147,14 @@ struct RegisterView: View {
                 }
                 .padding()
             }
+        }
+        // showing alerts
+        .alert(isPresented: $registerViewModel.showAlert) {
+            Alert(
+                title: Text(registerViewModel.alertTitle ?? "Unsuccessful registration"),
+                message: Text(registerViewModel.alertMessage ?? "An unknown error occurred"),
+                dismissButton: .default(Text(registerViewModel.dismissMessage ?? "Ok"))
+            )
         }
     }
 }

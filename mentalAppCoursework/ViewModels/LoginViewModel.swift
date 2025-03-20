@@ -42,6 +42,16 @@ class LoginViewModel: ObservableObject {
                 }
             }
         }
+        clearFields()
+    }
+
+    // clearing input fields
+    func clearFields() {
+        DispatchQueue.main.async {
+            self.email = ""
+
+            self.password = ""
+        }
     }
 
     // opening dialing number with emergency helpline
