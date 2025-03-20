@@ -5,7 +5,6 @@ import UIKit
 
 class FirestoreService: ObservableObject {
     @Published var user: User?
-    @Published var username: String = "User"
     @Published var showAlert: Bool = false
     @Published var alertMessage: String?
     @Published var alertTitle: String?
@@ -14,18 +13,20 @@ class FirestoreService: ObservableObject {
     static let shared = FirestoreService()
     private init() {}
 
-    func findName() {
+    // fetching username from database, if not successful return just user
+    func findName() async -> String {
         guard let user = Auth.auth().currentUser else {
-            return
+            return "User"
         }
         let uid = user.uid
         let docRef = db.collection("users").document(uid)
-        docRef.getDocument { document, error in
-            if let document = document, document.exists {
-                self.username = (document.get("name") as? String) ?? "User"
-            } else {
-                print("Document does not exist or an error occurred: \(error?.localizedDescription ?? "unknown error")")
-            }
+
+        do {
+            let document = try await docRef.getDocument()
+            let username = (document.get("name") as? String) ?? "User"
+            return username
+        } catch {
+            return "User"
         }
     }
 
