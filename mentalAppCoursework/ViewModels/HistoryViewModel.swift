@@ -38,6 +38,7 @@ class HistoryViewModel: ObservableObject {
                 let diaries = try await FirestoreService.shared.fetchAllDiaryEntries()
                 DispatchQueue.main.async {
                     self.diary = diaries
+                    self.filteredDiaryEntries = diaries
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -46,6 +47,24 @@ class HistoryViewModel: ObservableObject {
                     self.showAlert = true
                 }
             }
+        }
+    }
+
+    func filter(period: Int) {
+        let calendar = Calendar.current
+        let today = Date()
+        DispatchQueue.main.async {
+            self.filteredDiaryEntries = self.diary.filter { diaryEntry in
+                diaryEntry.date >= calendar.date(byAdding: .day, value: -period, to: today)!
+            }
+        }
+    }
+
+    func resetfilter() {
+        let calendar = Calendar.current
+        let today = Date()
+        DispatchQueue.main.async {
+            self.filteredDiaryEntries = self.diary
         }
     }
 
