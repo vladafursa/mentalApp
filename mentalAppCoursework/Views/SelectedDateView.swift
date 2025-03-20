@@ -103,6 +103,13 @@ struct SelectedDateView: View {
             .onDisappear {
                 historyViewModel.specificDiaryEntry = nil
             }
+            .alert(isPresented: $historyViewModel.showAlert) {
+                Alert(
+                    title: Text(historyViewModel.alertTitle ?? "Error"),
+                    message: Text(historyViewModel.alertMessage ?? "Can't load the data"),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }

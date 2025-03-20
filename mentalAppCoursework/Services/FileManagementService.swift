@@ -139,7 +139,7 @@ class FileManagementService: ObservableObject {
 
                     if yPosition > 760 {
                         context.beginPage()
-                        yPosition = 20 // Сбросить позицию для новой страницы
+                        yPosition = 20
                     }
                 }
             }
