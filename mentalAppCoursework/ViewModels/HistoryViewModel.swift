@@ -31,4 +31,25 @@ class HistoryViewModel: ObservableObject {
             }
         }
     }
+
+    func fetchAllDiaryEntries() {
+        Task {
+            do {
+                let diaries = try await FirestoreService.shared.fetchAllDiaryEntries()
+                DispatchQueue.main.async {
+                    self.diary = diaries
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.alertTitle = "Error"
+                    self.alertMessage = "couldn't fetch the data"
+                    self.showAlert = true
+                }
+            }
+        }
+    }
+
+    func CreatePDF() {
+        FileManagementService.shared.createPDF(entries: diary)
+    }
 }

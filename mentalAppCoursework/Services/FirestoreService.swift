@@ -97,4 +97,31 @@ class FirestoreService: ObservableObject {
             return nil
         }
     }
+
+    func fetchAllDiaryEntries() async throws -> [DiaryEntry] {
+        guard let user = Auth.auth().currentUser else {
+            return []
+        }
+        let uid = user.uid
+        let snapshot = try await db.collection("users")
+            .document(uid)
+            .collection("diary")
+            .getDocuments()
+
+        var diaryEntries: [DiaryEntry] = snapshot.documents.compactMap { document in
+            let data = document.data()
+
+            if let feelings = data["feelings"] as? String,
+               let dateTimestamp = data["date"] as? Timestamp,
+               let happinessScore = data["happinessRate"] as? Int
+            {
+                let date = dateTimestamp.dateValue()
+                return DiaryEntry(date: date, feelings: feelings, happinessScore: happinessScore)
+            } else {
+                return nil
+            }
+        }
+        diaryEntries.sort { $0.date < $1.date }
+        return diaryEntries
+    }
 }

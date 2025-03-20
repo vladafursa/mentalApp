@@ -85,4 +85,69 @@ class FileManagementService: ObservableObject {
         let fileURL = directory.appendingPathComponent(fileName)
         return fileURL
     }
+
+    func createPDF(entries: [DiaryEntry]) -> URL? {
+        let pdfMetaData = [
+            kCGPDFContextCreator: "MyApp",
+            kCGPDFContextAuthor: "User",
+        ]
+
+        // Create the PDF renderer
+        let format = UIGraphicsPDFRendererFormat()
+        format.documentInfo = pdfMetaData as [String: Any]
+
+        let pageWidth: CGFloat = 595.2 // A4 width
+        let pageHeight: CGFloat = 841.8 // A4 height
+        let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
+        let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
+
+        guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Could not find the Documents directory.")
+            return nil
+        }
+        let fileURL = documentsURL.appendingPathComponent("generated.pdf")
+        do {
+            try renderer.writePDF(to: fileURL) { context in
+                context.beginPage()
+
+                let textRect = CGRect(x: 20, y: 20, width: 560, height: 760)
+
+                let textAttributes: [NSAttributedString.Key: Any] = [
+                    .font: UIFont.systemFont(ofSize: 18),
+                ]
+                var yPosition: CGFloat = 20
+                for entry in entries {
+                    let entryText = "Date: \(entry.date)\nMood: \(entry.feelings)\nContent: \(entry.happinessScore)\n\n"
+                    let attributedText = NSAttributedString(string: entryText, attributes: textAttributes)
+                    let textSize = attributedText.size()
+                    let currentTextRect = CGRect(x: 20, y: yPosition, width: 560, height: textSize.height)
+                    attributedText.draw(in: currentTextRect)
+                    yPosition += textSize.height + 40
+                    if let photoURL = FileManagementService.shared.getPhotoForSelectedDate(entry.date) {
+                        if let photo = UIImage(contentsOfFile: photoURL.path) {
+                            let originalSize = photo.size
+                            let scaledWidth: CGFloat = 560
+                            let scaleFactor = scaledWidth / originalSize.width
+                            let scaledHeight = originalSize.height * scaleFactor
+                            let photoRect = CGRect(x: 20, y: yPosition, width: scaledWidth, height: scaledHeight)
+
+                            photo.draw(in: photoRect)
+
+                            yPosition += scaledHeight + 30
+                        }
+                    }
+
+                    if yPosition > 760 {
+                        context.beginPage()
+                        yPosition = 20 // Сбросить позицию для новой страницы
+                    }
+                }
+            }
+            print("PDF saved to: \(fileURL.path)")
+            return fileURL
+        } catch {
+            print("Error creating PDF: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }

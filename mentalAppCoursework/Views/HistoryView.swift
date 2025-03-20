@@ -59,21 +59,21 @@ struct HistoryView: View {
                         .foregroundColor(.blue)
                     }
 
-                    Button("Download history") {}
-                        .font(.system(size: 18))
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding(12)
-                        .background(.buttonColour)
-                        .cornerRadius(7)
-                        .shadow(radius: 5)
+                    Button("Download history") {
+                        historyViewModel.CreatePDF()
+                    }
+                    .font(.system(size: 18))
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding(12)
+                    .background(.buttonColour)
+                    .cornerRadius(7)
+                    .shadow(radius: 5)
                 }
             }
         }
         .onAppear {
-            Task {
-                // await firestoreService.fetchAndPrintNotes()
-            }
+            historyViewModel.fetchAllDiaryEntries()
         }
     }
 }
