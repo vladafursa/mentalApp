@@ -4,9 +4,6 @@ import Foundation
 import SwiftUI
 
 struct LoginView: View {
-    @State var username: String = ""
-    @State var password: String = ""
-
     @StateObject private var loginViewModel = LoginViewModel()
     var body: some View {
         NavigationStack {
@@ -46,7 +43,7 @@ struct LoginView: View {
 
                                     TextField(
                                         "email@gmail.com",
-                                        text: $username
+                                        text: $loginViewModel.email
                                     )
                                     .disableAutocorrection(true)
                                     .autocapitalization(.none)
@@ -62,7 +59,7 @@ struct LoginView: View {
                                         .frame(maxWidth: 100, alignment: .leading)
                                     SecureField(
                                         "Password1@",
-                                        text: $password
+                                        text: $loginViewModel.password
                                     )
                                     .disableAutocorrection(true)
                                     .font(.system(size: 22))
@@ -72,7 +69,7 @@ struct LoginView: View {
                                 .padding(.bottom)
 
                                 Button("Submit") {
-                                    //         try await authService.login(email: username, password: password)
+                                    loginViewModel.login()
                                 }
 
                                 .font(.system(size: 18))
@@ -121,7 +118,7 @@ struct LoginView: View {
                         .offset(y: -95)
                         Spacer()
                         Button(action: {
-                            //    authService.openEmergencyCall()
+                            loginViewModel.openEmergencyCall()
                         }) {
                             Text("Emergency line")
                         }
@@ -133,6 +130,14 @@ struct LoginView: View {
                 }
             }
             .navigationDestination(isPresented: $loginViewModel.isLoggedIn) { ContentView() }
+        }
+        // presenting alert
+        .alert(isPresented: $loginViewModel.showAlert) {
+            Alert(
+                title: Text(loginViewModel.alertTitle ?? "Unsuccessful login"),
+                message: Text(loginViewModel.alertMessage ?? "An unknown error occurred"),
+                dismissButton: .default(Text("try again"))
+            )
         }
     }
 }
