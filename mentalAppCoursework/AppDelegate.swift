@@ -1,5 +1,6 @@
 import FirebaseCore
 import FirebaseMessaging
+import GoogleMaps
 import UIKit
 import UserNotifications
 
@@ -10,7 +11,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     {
         // configeration of firebase
         FirebaseApp.configure()
-
+        GMSServices.provideAPIKey("AIzaSyCLrT-3AJ0Evno6ZAXsR4Ddo4KlUFVn5bU")
         // optios of notifications
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         // request for sending notifications
