@@ -24,11 +24,14 @@ struct SelectedDateView: View {
                             .padding()
                     }
 
-                    Image("appLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 300, alignment: .topLeading)
-                        .padding(.bottom, 40)
+                    ZStack {
+                        Image("appLogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 300, alignment: .topLeading)
+                            .padding(.bottom, 40)
+                    }
+                    .offset(y: -60)
                     Spacer()
                 }
                 ZStack {
@@ -93,7 +96,7 @@ struct SelectedDateView: View {
                         }
                     }
                 }
-                .offset(y: -230)
+                .offset(y: -320)
             }
 
             .onAppear {
