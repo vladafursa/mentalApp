@@ -8,7 +8,7 @@ struct RegisterView: View {
     @StateObject private var registerViewModel = RegisterViewModel()
     var body: some View {
         ZStack {
-            Color("backgroundColour")
+            Color("authBackgroundColour")
                 .edgesIgnoringSafeArea(.all)
             if registerViewModel.isLoading {
                 ProgressView()

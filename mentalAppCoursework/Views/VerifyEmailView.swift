@@ -4,7 +4,7 @@ struct VerifyEmailView: View {
     @StateObject private var loginViewModel = LoginViewModel()
     var body: some View {
         ZStack {
-            Color("backgroundColour")
+            Color("authBackgroundColour")
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 // title
