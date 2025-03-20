@@ -15,6 +15,8 @@ struct HomeView: View {
     @State private var isShowingCamera = false
     @State private var capturedImage: UIImage?
     @State private var hasActionBeenPerformed = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     var body: some View {
         NavigationView {
             ZStack {
@@ -115,7 +117,20 @@ struct HomeView: View {
                             }
 
                             ZStack {
-                                Button(action: {}) { Text("Save") }
+                                Button(action: {
+                                    if capturedImage == nil {
+                                        showAlert = true
+                                    } else {
+                                        showAlert = homeViewModel.showAlert
+                                        if !showAlert {
+                                            homeViewModel.addEntry()
+                                            FileManagementService.shared.savePhoto(capturedImage!)
+                                        } else {
+                                            alertMessage = homeViewModel.alertMessage ?? ""
+                                        }
+                                    }
+
+                                }) { Text("Save") }
 
                                     .font(.system(size: 18))
                                     .foregroundColor(.white)
@@ -136,10 +151,18 @@ struct HomeView: View {
             }
         }
         .onAppear {
+            homeViewModel.checkIfSubmitted()
             if !hasActionBeenPerformed {
                 homeViewModel.findUserName()
                 hasActionBeenPerformed = true
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text(alertMessage ?? "Missing Information"),
+                message: Text("Please fill out all fields and take a photo before submitting."),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

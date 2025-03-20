@@ -6,6 +6,7 @@ class HomeViewModel: ObservableObject {
     @Published var rating: Int = 0
     @Published var feelings: String = ""
     @Published var hasActionBeenPerformed = false
+    @Published var alertTitle: String?
     @Published var showAlert = false
     @Published var alertMessage = ""
     @Published var hasSubmitted: Bool = false
@@ -22,6 +23,63 @@ class HomeViewModel: ObservableObject {
             } catch {
                 self.username = "User"
             }
+        }
+    }
+
+    func checkIfSubmitted() {
+        Task {
+            do {
+                let submitted = try await FirestoreService.shared.ifTheDayWasAlreadySubmitted()
+                DispatchQueue.main.async {
+                    self.hasSubmitted = submitted
+                }
+            } catch {
+                self.hasSubmitted = false
+            }
+        }
+    }
+
+    func addEntry() {
+        if !checkInput() {
+            Task {
+                do {
+                    try await FirestoreService.shared.addDiaryEntry(feelings: feelings, happinessScore: rating)
+                    stayHappyReminder()
+                    DispatchQueue.main.async {
+                        self.hasSubmitted = true
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.hasSubmitted = false
+                        self.showAlert = true
+                        self.alertTitle = "Couldn't save the data"
+                        self.alertMessage = "An error occured while saving your entry"
+                    }
+                }
+            }
+        }
+    }
+
+    func stayHappyReminder() {
+        if rating < 3 {
+            DispatchQueue.main.async {
+                self.showAlert = true
+                self.alertTitle = "Do not be sad!"
+                self.alertMessage = "Some days can be tough,  but remember, brighter moments are just around the corner. Stay happy!"
+            }
+        }
+    }
+
+    func checkInput() -> Bool {
+        if feelings.filter({ !$0.isWhitespace }).isEmpty || rating == 0 {
+            DispatchQueue.main.async {
+                self.showAlert = true
+                self.alertTitle = "Missing Information"
+                self.alertMessage = "Please fill out all fields"
+            }
+            return true
+        } else {
+            return false
         }
     }
 }
