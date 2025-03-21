@@ -39,7 +39,7 @@ struct HomeView: View {
                     .offset(y: -60)
                     Spacer()
                 }
-
+                .padding(.bottom, 20)
                 if homeViewModel.hasSubmitted {
                     VStack {
                         Text("You already submitted your day")
@@ -133,7 +133,7 @@ struct HomeView: View {
                                     }
 
                                 }) { Text("Save") }
-
+                                    .frame(maxWidth: 95)
                                     .font(.system(size: 18))
                                     .foregroundColor(.white)
                                     .bold()
@@ -142,7 +142,7 @@ struct HomeView: View {
                                     .cornerRadius(7)
                                     .shadow(radius: 5)
                             }
-                            .offset(y: 40)
+                            .offset(y: 30)
                         }
                     }
                     .onTapGesture {

@@ -25,7 +25,7 @@ struct HistoryView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 300, alignment: .topLeading)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 75)
                     Spacer()
                 }
                 VStack {
