@@ -17,8 +17,6 @@ struct GoogleMapView: UIViewRepresentable {
     let selectedRoute: [CLLocationCoordinate2D]
     // internal usage variables
     @ObservedObject private var locationManager = LocationManager()
-    @State private var currentStepIndex = 0
-    @State private var currentRouteSteps: [MKRoute.Step] = []
     @State private var lastRoute: [CLLocationCoordinate2D] = []
     // create the first view
     func makeUIView(context _: Context) -> GMSMapView {
