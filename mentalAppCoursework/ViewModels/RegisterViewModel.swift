@@ -62,7 +62,7 @@ class RegisterViewModel: ObservableObject {
 
     // form validations
 
-    // accessed and modified from https://medium.com/@kalidoss.shanmugam/swift-ios-email-validation-best-practices-and-solutions-05456e265d2f
+    // accessed and modified from
     func checkIfFieldsAreEmpty() -> Bool {
         if username.isEmpty || email.isEmpty || password.isEmpty || repeatedPassword.isEmpty || age.words.isEmpty {
             DispatchQueue.main.async {
@@ -93,6 +93,7 @@ class RegisterViewModel: ObservableObject {
         }
     }
 
+    // checks rules of password
     func containsUppercaseAndSpecialCharacter(_ string: String) -> Bool {
         let pattern = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>]).+$"
         let regex = try! NSRegularExpression(pattern: pattern)
@@ -114,6 +115,7 @@ class RegisterViewModel: ObservableObject {
         }
     }
 
+    // checks rules of password
     func checkAllowansOfPassword() -> Bool {
         if password.count < 8 || !containsUppercaseAndSpecialCharacter(password) {
             DispatchQueue.main.async {

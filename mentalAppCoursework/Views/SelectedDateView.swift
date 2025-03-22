@@ -1,10 +1,3 @@
-//
-//  SelectedDateView.swift
-//  mobile_implementation_coursework
-//
-//  Created by Влада Фурса on 13.03.25.
-//
-
 import SwiftUI
 
 struct SelectedDateView: View {

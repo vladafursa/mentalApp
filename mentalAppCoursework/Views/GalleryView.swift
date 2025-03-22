@@ -1,10 +1,3 @@
-//
-//  GalleryView.swift
-//  mobile_implementation_coursework
-//
-//  Created by Влада Фурса on 30.01.25.
-//
-
 import SwiftUI
 
 struct GalleryView: View {

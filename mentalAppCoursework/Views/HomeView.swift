@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  mobile_implementation_coursework
-//
-//  Created by Влада Фурса on 24.01.25.
-//
-
 import FirebaseAuth
 import FirebaseFirestore
 import SwiftUI

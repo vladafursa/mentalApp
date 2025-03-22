@@ -1,10 +1,3 @@
-//
-//  HistoryView.swift
-//  mobile_implementation_coursework
-//
-//  Created by Влада Фурса on 30.01.25.
-//
-
 import SwiftUI
 import UIKit
 
@@ -36,7 +29,7 @@ struct HistoryView: View {
                         Text("Choose the day you want to remember")
                             .font(.system(size: 22))
                             .foregroundColor(.textColour)
-                            .multilineTextAlignment(.center) // Центрирование строк текста
+                            .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     .padding(.horizontal)

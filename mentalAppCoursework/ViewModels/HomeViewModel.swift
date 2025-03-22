@@ -73,23 +73,6 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    func checkIfImageWasTaken(image: UIImage) -> Bool {
-        if image == nil {
-            DispatchQueue.main.async {
-                self.showAlert = true
-                self.alertTitle = "Missing Information"
-                self.alertMessage = "Please take photo"
-            }
-            return false
-        } else {
-            return true
-        }
-    }
-
-    func saveImage(image: UIImage) {
-        FileManagementService.shared.savePhoto(image)
-    }
-
     // form validation: not allow inputing just empty spaces and 0 rate
     func checkInput() -> Bool {
         if feelings.filter({ !$0.isWhitespace }).isEmpty || rating == 0 {
