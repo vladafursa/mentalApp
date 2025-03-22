@@ -13,7 +13,7 @@ struct ContentView: View {
                 }
             HistoryView()
                 .tabItem {
-                    Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                    Image(systemName: "calendar.badge.clock")
                         .foregroundColor(.titleColour)
                     Text("History")
                         .foregroundColor(.titleColour)

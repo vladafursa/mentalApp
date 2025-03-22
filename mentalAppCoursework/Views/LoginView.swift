@@ -19,9 +19,16 @@ struct LoginView: View {
                 } else {
                     VStack {
                         // title
-                        Text("Your mental health assistant")
-                            .font(.system(size: 30))
-                            .foregroundColor(.titleColour)
+                        ZStack {
+                            // title
+                            Text("Your mental health assistant")
+                                .font(.system(size: 30))
+                                .foregroundColor(.titleColour)
+                                .lineLimit(nil)
+                                .fixedSize(horizontal: true, vertical: true)
+                        }
+                        .padding(.horizontal)
+                        .offset(y: 20)
                         // logo
                         Image("appLogo")
                             .resizable()
@@ -48,7 +55,7 @@ struct LoginView: View {
                                     .disableAutocorrection(true)
                                     .autocapitalization(.none)
                                     .font(.system(size: 22))
-                                    .underline()
+                                    
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .frame(maxWidth: .infinity)
                                 }
@@ -64,7 +71,7 @@ struct LoginView: View {
                                     )
                                     .disableAutocorrection(true)
                                     .font(.system(size: 22))
-                                    .underline()
+                                   
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .frame(maxWidth: .infinity)
                                 }
@@ -116,7 +123,7 @@ struct LoginView: View {
                                     .shadow(radius: 5)
                             }
                         }
-                        .frame(maxWidth: 190)
+                        .frame(maxWidth: 200)
                         .offset(y: -95)
                         Spacer()
                         Button(action: {

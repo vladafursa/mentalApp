@@ -19,12 +19,14 @@ struct SelectedDateView: View {
                 VStack {
                     HStack {
                         Spacer()
+                        //date
                         Text(date, format: .dateTime.day().month().year())
                             .foregroundColor(.titleColour)
                             .padding()
                     }
 
                     ZStack {
+                        //logo
                         Image("appLogo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -37,35 +39,38 @@ struct SelectedDateView: View {
                 ZStack {
                     VStack {
                         if historyViewModel.specificDiaryEntry != nil {
-                            VStack {
+                            VStack(spacing:10) {
                                 HStack {
-                                    Text("That day you felt")
+                                    Text("That day you felt:")
                                         .font(.system(size: 22))
                                         .foregroundColor(.textColour)
                                     Spacer()
                                 }
-                                .padding()
+                                .frame(maxWidth: 350, alignment: .leading)
+                                .padding(.bottom)
                                 HStack {
                                     Text("\(historyViewModel.specificDiaryEntry?.feelings ?? "no data")")
                                     Spacer()
                                 }
                                 .padding()
+                                .frame(maxWidth: 350, alignment: .leading)
                                 .background(Color.white)
                                 .cornerRadius(10)
                             }
-                            .padding()
+                           
                             VStack {
                                 HStack {
-                                    Text("That day you rated your happiness")
+                                    Text("That day you rated your happiness:")
                                         .font(.system(size: 22))
                                         .foregroundColor(.textColour)
-
+                                        .fixedSize(horizontal: true, vertical: false)
                                     Spacer()
                                 }
                                 .padding()
                                 let rate = historyViewModel.specificDiaryEntry?.happinessScore ?? 0
 
                                 HStack {
+                                    //star rate
                                     ForEach(0 ..< rate) { _ in
                                         Image(systemName: "star.fill")
                                             .font(.system(size: 21))
@@ -75,9 +80,24 @@ struct SelectedDateView: View {
                             }
                             .padding()
                         } else {
-                            Text("No data available for that period")
+                            VStack {//text if no data was found for that date
+                                Text("No data available for that period.")
+                                    .font(.system(size: 22))
+                                    .foregroundColor(.textColour)
+                        
+                            }
+                            .padding()
+                        
                         }
-
+                        HStack {
+                            Text("That day you looked:")
+                                .font(.system(size: 22))
+                                .foregroundColor(.textColour)
+                                .fixedSize(horizontal: true, vertical: false)
+                            Spacer()
+                        }
+                        .padding(.horizontal, 35)
+                        //image
                         if let imageURL = imageURL {
                             if FileManager.default.fileExists(atPath: imageURL.path) {
                                 if let image = UIImage(contentsOfFile: imageURL.path) {
@@ -88,24 +108,29 @@ struct SelectedDateView: View {
                                         .padding()
                                 }
                             } else {
-                                Text("No image found")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.textColour)
-                                    .padding(.leading, 30)
+                                VStack {//text if no image was found for that date
+                                    Text("No image found")
+                                        .font(.system(size: 22))
+                                        .foregroundColor(.textColour)
+                            
+                                }
+                                .padding()
                             }
                         }
                     }
                 }
                 .offset(y: -320)
             }
-
+            //fetch diary entry
             .onAppear {
                 historyViewModel.fetchSpecififcDate(date: date)
                 imageURL = FileManagementService.shared.getPhotoForSelectedDate(date)
             }
+            //forget diary entry to prevent infinite loop of opening this page
             .onDisappear {
                 historyViewModel.specificDiaryEntry = nil
             }
+            //alerts
             .alert(isPresented: $historyViewModel.showAlert) {
                 Alert(
                     title: Text(historyViewModel.alertTitle ?? "Error"),

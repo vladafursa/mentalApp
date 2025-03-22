@@ -4,14 +4,9 @@ import Foundation
 
 // creating final singleton of authentication
 final class AuthenticationService: ObservableObject {
-    // variables that will be used across views and other services
+    // variables that will be used across other services
     @Published var currentUser: FirebaseAuth.User?
-    @Published var isLoggedIn: Bool = false
-    @Published var isLoading: Bool = false
-    @Published var showAlert: Bool = false
-    @Published var alertTitle: String?
-    @Published var alertMessage: String?
-    @Published var dismissMessage: String?
+
 
     // creating instance of Auth
     private let auth = Auth.auth()

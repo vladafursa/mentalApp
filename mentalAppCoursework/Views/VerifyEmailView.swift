@@ -11,6 +11,8 @@ struct VerifyEmailView: View {
                 Text("Your mental health assistant")
                     .font(.system(size: 30))
                     .foregroundColor(.titleColour)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: true, vertical: true)
                 // logo
                 Image("appLogo")
                     .resizable()
@@ -32,13 +34,13 @@ struct VerifyEmailView: View {
                             Spacer()
 
                             TextField(
-                                "example@gmail.com",
+                                "email@gmail.com",
                                 text: $loginViewModel.email
                             )
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                             .font(.system(size: 22))
-                            .underline()
+                            
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: .infinity)
                         }

@@ -7,24 +7,25 @@
 //  Created by Влада Фурса on 30.01.25.
 //
 
-import AVFoundation
 import GoogleMaps
 import MapKit
 import SwiftUI
 
 struct GoogleMapView: UIViewRepresentable {
-    @ObservedObject private var locationManager = LocationManager()
+   //parameter variables
     let routes: [[CLLocationCoordinate2D]]
     let selectedRoute: [CLLocationCoordinate2D]
-    private let speechSynthesizer = AVSpeechSynthesizer()
+    //internal usage variables
+    @ObservedObject private var locationManager = LocationManager()
     @State private var currentStepIndex = 0
     @State private var currentRouteSteps: [MKRoute.Step] = []
     @State private var lastRoute: [CLLocationCoordinate2D] = []
-    let synthesizer = AVSpeechSynthesizer()
+    //create the first view
     func makeUIView(context _: Context) -> GMSMapView {
+        //assign starting point to some place in Nottingham
         let camera = GMSCameraPosition.camera(withLatitude: 52.906, longitude: -1.230, zoom: 10.0)
         let mapView = GMSMapView(frame: UIScreen.main.bounds)
-
+        //draw markers and directions for each route
         for route in routes {
             drawMarkers(mapView, route: route)
             for i in 0 ..< route.count {
@@ -33,20 +34,18 @@ struct GoogleMapView: UIViewRepresentable {
                 }
             }
         }
-        /* if let location = locationManager.currentLocation {
-         print(location.coordinate)
-         }*/
-
         mapView.camera = camera
         mapView.isMyLocationEnabled = true
         return mapView
     }
-
+//updates ui accordingly
     func updateUIView(_ mapView: GMSMapView, context _: Context) {
+        //move camera to the current position
         if let location = locationManager.currentLocation {
             let cameraUpdate = GMSCameraUpdate.setTarget(location.coordinate)
             mapView.animate(with: cameraUpdate)
         }
+        //if the route was chosen and is not the same as previous one, redraw
         if !selectedRoute.isEmpty {
             if !checkIfRoutesAreEqual(route1: selectedRoute, route2: lastRoute) {
                 mapView.clear()
@@ -56,35 +55,39 @@ struct GoogleMapView: UIViewRepresentable {
             }
         }
     }
-
+//function that takes into account current location and adds it to the route
     func Navigate(_ mapView: GMSMapView, selectedRoute: [CLLocationCoordinate2D]) {
         guard let currentLocation = locationManager.currentLocation?.coordinate else { return }
         var selectedRoutWithCurrentLocation = selectedRoute
         selectedRoutWithCurrentLocation.insert(currentLocation, at: 0)
         for i in 0 ..< selectedRoutWithCurrentLocation.count {
             if i < selectedRoutWithCurrentLocation.count - 1 {
-                navigateUser(mapView, start: selectedRoutWithCurrentLocation[i], end: selectedRoutWithCurrentLocation[i + 1])
+                getDirection(mapView, start: selectedRoutWithCurrentLocation[i], end: selectedRoutWithCurrentLocation[i + 1])
             }
         }
     }
-
+//draws markers for each coordinate of the route
     func drawMarkers(_ mapView: GMSMapView, route: [CLLocationCoordinate2D]) {
         for coordinate in route {
             let marker = GMSMarker(position: coordinate)
             marker.map = mapView
         }
     }
-
+    
+//calculate the directions and draw them accordingly
     func getDirection(_ mapView: GMSMapView, start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) {
         Task {
+            //configuring request
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: MKPlacemark(coordinate: start))
             request.destination = MKMapItem(placemark: MKPlacemark(coordinate: end))
             request.requestsAlternateRoutes = true
             request.transportType = .walking
             do {
+                //exactly calculate the route(not just line, but exact direction route)
                 let directions = try await MKDirections(request: request).calculate()
                 if let calculatedRoute = directions.routes.first {
+                    //draw these directions on a map
                     drawRouteDirections(mapView, route: calculatedRoute)
                 }
             } catch {
@@ -92,40 +95,23 @@ struct GoogleMapView: UIViewRepresentable {
             }
         }
     }
-
-    func navigateUser(_ mapView: GMSMapView, start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) {
-        Task {
-            let request = MKDirections.Request()
-            request.source = MKMapItem(placemark: MKPlacemark(coordinate: start))
-            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: end))
-            request.requestsAlternateRoutes = true
-            request.transportType = .walking
-            do {
-                let directions = try await MKDirections(request: request).calculate()
-                if let calculatedRoute = directions.routes.first {
-                    drawRouteDirections(mapView, route: calculatedRoute)
-                    let instruction = calculatedRoute.steps.first?.instructions ?? "No instructions"
-                    speakInstruction(comand: instruction)
-                }
-            } catch {
-                print("error calculating directions")
-            }
-        }
-    }
-
+//draw provided data
     private func drawRouteDirections(_ mapView: GMSMapView, route: MKRoute) {
         let path = GMSMutablePath()
         for step in route.steps {
             path.add(step.polyline.coordinate)
         }
         DispatchQueue.main.async {
+            //configure polyline and populate with data
             let polyline = GMSPolyline(path: path)
             polyline.strokeWidth = 3.0
             polyline.strokeColor = .blue
+            //add poluline to the map
             polyline.map = mapView
         }
     }
 
+    //check if 2 routes are the same by iterating through each pair of coordinates
     func checkIfRoutesAreEqual(route1: [CLLocationCoordinate2D], route2: [CLLocationCoordinate2D]) -> Bool {
         guard route1.count == route2.count else { return false }
         return zip(route1, route2).allSatisfy { coord1, coord2 in
@@ -133,18 +119,11 @@ struct GoogleMapView: UIViewRepresentable {
         }
     }
 
-    func speakInstruction(comand: String) {
-        let utterance = AVSpeechUtterance(string: comand)
-        utterance.rate = 0.57
-        utterance.pitchMultiplier = 0.8
-        utterance.postUtteranceDelay = 0.2
-        utterance.volume = 0.8
-        let voice = AVSpeechSynthesisVoice(language: "en-EN")
-        utterance.voice = voice
-    }
+   
 }
 
 struct WalksView: View {
+    //predefined routes
     let route1: [CLLocationCoordinate2D] = [
         CLLocationCoordinate2D(latitude: 52.906, longitude: -1.230),
         CLLocationCoordinate2D(latitude: 52.902, longitude: -1.225),
@@ -176,31 +155,42 @@ struct WalksView: View {
                 Color("backgroundColour")
                     .edgesIgnoringSafeArea(.all)
                 VStack {
+                   
                     VStack {
                         Text("Choose the route you want to explore")
-                        let routeDefinitions: [String: [CLLocationCoordinate2D]] = [
-                            "Route1": route1,
-                            "Route2": route2,
-                            "Route3": route3,
-                        ]
-
-                        ForEach(routeDefinitions.keys.sorted(), id: \.self) { route in
-                            Button(action: {
-                                if let selectedValues = routeDefinitions[route], !selectedValues.isEmpty {
-                                    selectedRoute = selectedValues
-                                } else {
-                                    print("No values found or empty array for \(route).")
+                            .font(.system(size: 22))
+                            .foregroundColor(.textColour)
+                            .padding(.top, 10)
+                        HStack(){
+                            let routeDefinitions: [String: [CLLocationCoordinate2D]] = [
+                                "Clifton": route1,
+                                "Wollaton": route2,
+                                "Daleside": route3,
+                            ]
+                            //drawing buttons
+                            ForEach(routeDefinitions.keys.sorted(), id: \.self) { route in
+                                Button(action: {
+                                    //assigning selected route a value
+                                    if let selectedValues = routeDefinitions[route], !selectedValues.isEmpty {
+                                        selectedRoute = selectedValues
+                                    }
+                                }) {
+                                    Text(route)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(6)
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .background(.buttonColour)
+                                        .cornerRadius(7)
+                                        .shadow(radius: 5)
                                 }
-                            }) {
-                                Text(route)
-                                    .padding()
-                                    .background(Color.green)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(3)
+                                .padding(.horizontal, 8)
                             }
-                            .padding(.horizontal)
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding()
                     }
+                    //parsing data to mapview
                     GoogleMapView(routes: routes, selectedRoute: selectedRoute)
                 }
             }
@@ -208,6 +198,4 @@ struct WalksView: View {
     }
 }
 
-#Preview {
-    WalksView()
-}
+

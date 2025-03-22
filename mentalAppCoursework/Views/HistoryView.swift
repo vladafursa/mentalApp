@@ -21,6 +21,7 @@ struct HistoryView: View {
                     .edgesIgnoringSafeArea(.all)
 
                 VStack {
+                    //logo
                     Image("appLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -28,15 +29,20 @@ struct HistoryView: View {
                         .padding(.bottom, 75)
                     Spacer()
                 }
+                .padding(.bottom, 30)
                 VStack {
-                    HStack {
+                    VStack {
+                        //title
                         Text("Choose the day you want to remember")
                             .font(.system(size: 22))
                             .foregroundColor(.textColour)
-                            .padding(.leading, 30)
-                        Spacer()
+                            .multilineTextAlignment(.center) // Центрирование строк текста
+                            .fixedSize(horizontal: false, vertical: true)
                     }
+                    .padding(.horizontal)
+                    .padding(.top, 35)
                     VStack {
+                        //calendar
                         DatePicker(
                             "Start Date",
                             selection: $date,
@@ -46,35 +52,46 @@ struct HistoryView: View {
                     }
                     .background(Color.white)
                     .cornerRadius(30)
-                    .padding(25)
+                    .padding(.horizontal, 25)
+                    //assign a variable tapped day
                     .onChange(of: date) { _ in
                         showSelectedDateView = true
                     }
-
-                    NavigationLink(
-                        destination: SelectedDateView(date: date)
-
-                    ) { Text("Go to Diary")
+                    VStack(spacing:12){
+                        NavigationLink(
+                            destination: SelectedDateView(date: date)
+                            
+                        ) { Text("Go to Diary")
+                                .font(.system(size: 18))
+                                .foregroundColor(.white)
+                                .bold()
+                                .frame(maxWidth: .infinity)
+                                .padding(12)
+                                .background(.buttonColour)
+                                .cornerRadius(7)
+                                .shadow(radius: 5)
+                        }
                         .padding()
-                        .foregroundColor(.blue)
+                        Button("Download history") {
+                            historyViewModel.CreatePDF()
+                        }
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding(12)
+                        .background(.buttonColour)
+                        .cornerRadius(7)
+                        .shadow(radius: 5)
                     }
-
-                    Button("Download history") {
-                        historyViewModel.CreatePDF()
-                    }
-                    .font(.system(size: 18))
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(12)
-                    .background(.buttonColour)
-                    .cornerRadius(7)
-                    .shadow(radius: 5)
+                    .frame(maxWidth: 215)
                 }
             }
         }
+        //load diary entries for download pdf function
         .onAppear {
             historyViewModel.fetchAllDiaryEntries()
         }
+        //alerts
         .alert(isPresented: $historyViewModel.showAlert) {
             Alert(
                 title: Text(historyViewModel.alertTitle ?? "Error"),
