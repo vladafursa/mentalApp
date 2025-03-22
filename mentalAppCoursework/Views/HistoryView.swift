@@ -21,7 +21,7 @@ struct HistoryView: View {
                     .edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    //logo
+                    // logo
                     Image("appLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -32,7 +32,7 @@ struct HistoryView: View {
                 .padding(.bottom, 30)
                 VStack {
                     VStack {
-                        //title
+                        // title
                         Text("Choose the day you want to remember")
                             .font(.system(size: 22))
                             .foregroundColor(.textColour)
@@ -42,7 +42,7 @@ struct HistoryView: View {
                     .padding(.horizontal)
                     .padding(.top, 35)
                     VStack {
-                        //calendar
+                        // calendar
                         DatePicker(
                             "Start Date",
                             selection: $date,
@@ -53,23 +53,23 @@ struct HistoryView: View {
                     .background(Color.white)
                     .cornerRadius(30)
                     .padding(.horizontal, 25)
-                    //assign a variable tapped day
+                    // assign a variable tapped day
                     .onChange(of: date) { _ in
                         showSelectedDateView = true
                     }
-                    VStack(spacing:12){
+                    VStack(spacing: 12) {
                         NavigationLink(
                             destination: SelectedDateView(date: date)
-                            
+
                         ) { Text("Go to Diary")
-                                .font(.system(size: 18))
-                                .foregroundColor(.white)
-                                .bold()
-                                .frame(maxWidth: .infinity)
-                                .padding(12)
-                                .background(.buttonColour)
-                                .cornerRadius(7)
-                                .shadow(radius: 5)
+                            .font(.system(size: 18))
+                            .foregroundColor(.white)
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding(12)
+                            .background(.buttonColour)
+                            .cornerRadius(7)
+                            .shadow(radius: 5)
                         }
                         .padding()
                         Button("Download history") {
@@ -87,11 +87,11 @@ struct HistoryView: View {
                 }
             }
         }
-        //load diary entries for download pdf function
+        // load diary entries for download pdf function
         .onAppear {
             historyViewModel.fetchAllDiaryEntries()
         }
-        //alerts
+        // alerts
         .alert(isPresented: $historyViewModel.showAlert) {
             Alert(
                 title: Text(historyViewModel.alertTitle ?? "Error"),

@@ -7,7 +7,6 @@ final class AuthenticationService: ObservableObject {
     // variables that will be used across other services
     @Published var currentUser: FirebaseAuth.User?
 
-
     // creating instance of Auth
     private let auth = Auth.auth()
     // creating singleton

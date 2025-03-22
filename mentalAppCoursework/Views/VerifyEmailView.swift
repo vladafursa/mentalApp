@@ -40,7 +40,6 @@ struct VerifyEmailView: View {
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                             .font(.system(size: 22))
-                            
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: .infinity)
                         }

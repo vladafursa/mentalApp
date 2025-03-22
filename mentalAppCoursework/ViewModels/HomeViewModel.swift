@@ -25,7 +25,8 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-//calling firestore service to find out if the entry was already submitted
+
+    // calling firestore service to find out if the entry was already submitted
     func checkIfSubmitted() {
         Task {
             do {
@@ -38,7 +39,8 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-//calling firestore service to save data into firebase and catch errors by presenting alert
+
+    // calling firestore service to save data into firebase and catch errors by presenting alert
     func addEntry() {
         if !checkInput() {
             Task {
@@ -59,7 +61,8 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-//show motivating alert if user rated happiness low
+
+    // show motivating alert if user rated happiness low
     func stayHappyReminder() {
         if rating < 3 {
             DispatchQueue.main.async {
@@ -69,25 +72,25 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-    
-    func checkIfImageWasTaken(image:  UIImage)-> Bool{
-     if image == nil {
-         DispatchQueue.main.async {
-             self.showAlert = true
-             self.alertTitle = "Missing Information"
-             self.alertMessage = "Please take photo"
-         }
-         return false
-     } else {
-         return true
+
+    func checkIfImageWasTaken(image: UIImage) -> Bool {
+        if image == nil {
+            DispatchQueue.main.async {
+                self.showAlert = true
+                self.alertTitle = "Missing Information"
+                self.alertMessage = "Please take photo"
+            }
+            return false
+        } else {
+            return true
         }
     }
-    
-    func saveImage(image:  UIImage){
+
+    func saveImage(image: UIImage) {
         FileManagementService.shared.savePhoto(image)
     }
-     
-//form validation: not allow inputing just empty spaces and 0 rate
+
+    // form validation: not allow inputing just empty spaces and 0 rate
     func checkInput() -> Bool {
         if feelings.filter({ !$0.isWhitespace }).isEmpty || rating == 0 {
             DispatchQueue.main.async {
@@ -100,8 +103,7 @@ class HomeViewModel: ObservableObject {
             return false
         }
     }
-    
-    
+
     func showPhotoAlert() {
         DispatchQueue.main.async {
             self.showAlert = true
@@ -109,5 +111,4 @@ class HomeViewModel: ObservableObject {
             self.alertMessage = "Please take a selfie"
         }
     }
-
 }

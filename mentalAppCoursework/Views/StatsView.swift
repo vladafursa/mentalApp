@@ -12,7 +12,7 @@ struct StatsView: View {
                     .edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    //logo
+                    // logo
                     Image("appLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -22,14 +22,14 @@ struct StatsView: View {
                 }
                 VStack {
                     HStack {
-                        //title
+                        // title
                         Text("Statistic of your happiness for the last week")
                             .font(.system(size: 22))
                             .foregroundColor(.textColour)
                             .padding(.leading, 30)
                         Spacer()
                     }
-                    //menu that changes option on selection
+                    // menu that changes option on selection
                     HStack {
                         Menu(selectedOption) {
                             Button("1 week") {
@@ -56,7 +56,7 @@ struct StatsView: View {
                         Spacer()
                     }
                     .padding(.bottom)
-                    //chart
+                    // chart
                     Chart {
                         ForEach(historyViewModel.filteredDiaryEntries) { data in
                             LineMark(
@@ -71,7 +71,7 @@ struct StatsView: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 5)
-                    //labels
+                    // labels
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .day, count: 1))
                     }
@@ -86,11 +86,11 @@ struct StatsView: View {
                 Spacer()
             }
         }
-        //fetch diary entries for the chart
+        // fetch diary entries for the chart
         .onAppear {
             historyViewModel.fetchAllDiaryEntries()
         }
-        //alerts
+        // alerts
         .alert(isPresented: $historyViewModel.showAlert) {
             Alert(
                 title: Text(historyViewModel.alertTitle ?? "Error"),

@@ -54,7 +54,6 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
                                 .font(.system(size: 22))
-                                
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: .infinity)
                             }
@@ -72,7 +71,6 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
                                 .font(.system(size: 22))
-                                
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: .infinity)
                             }
@@ -101,7 +99,6 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
                                 .font(.system(size: 22))
-                                
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: .infinity)
                             }
@@ -119,7 +116,6 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
                                 .font(.system(size: 22))
-                                
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: .infinity)
                                 .fixedSize(horizontal: false, vertical: true)

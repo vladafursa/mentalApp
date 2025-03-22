@@ -30,7 +30,7 @@ struct HomeView: View {
                             .padding()
                     }
                     ZStack {
-                        //logo
+                        // logo
                         Image("appLogo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -42,14 +42,14 @@ struct HomeView: View {
                 }
                 .padding(.bottom, 20)
                 if homeViewModel.hasSubmitted {
-                    VStack {//text if the action was already performed
+                    VStack { // text if the action was already performed
                         Text("You already submitted your day")
                             .foregroundColor(.textColour)
                     }
                 } else {
                     VStack {
                         VStack(spacing: 20) {
-                            HStack {//greeting of user
+                            HStack { // greeting of user
                                 Text("\(homeViewModel.username), tell me how you feel today")
                                     .font(.system(size: 22))
                                     .foregroundColor(.textColour)
@@ -65,7 +65,7 @@ struct HomeView: View {
                                     .background(Color.white)
                                     .cornerRadius(15)
                                     .padding()
-//showing that field is inputted
+                                // showing that field is inputted
                                 if !homeViewModel.feelings.isEmpty {
                                     let removedWhitespacesFeelongs = homeViewModel.feelings.filter { !$0.isWhitespace }
                                     if !removedWhitespacesFeelongs.isEmpty {
@@ -82,17 +82,17 @@ struct HomeView: View {
                                 Spacer()
                             }
 
-                            HStack(spacing: 40) {//star rate
+                            HStack(spacing: 40) { // star rate
                                 ForEach(1 ..< 6, id: \.self) { star in
                                     Button(action: {
                                         homeViewModel.rating = star
-                                    }) {//change of colour depending on tap
+                                    }) { // change of colour depending on tap
                                         Image(systemName: "star.fill")
                                             .foregroundColor(homeViewModel.rating >= star ? .yellow : .textColour)
                                             .font(.system(size: 21))
                                     }
                                 }
-//showing that field is inputted
+                                // showing that field is inputted
                                 if homeViewModel.rating > 0 {
                                     Image(systemName: "checkmark")
                                 }
@@ -116,23 +116,22 @@ struct HomeView: View {
                             .shadow(radius: 5)
                             .sheet(isPresented: $isShowingCamera) {
                                 CameraView(capturedImage: $capturedImage)
-                            }//showing that field is inputted
+                            } // showing that field is inputted
                             if capturedImage != nil {
                                 Image(systemName: "checkmark")
                             }
 
                             ZStack {
                                 Button(action: {
-                                    if capturedImage == nil{
+                                    if capturedImage == nil {
                                         homeViewModel.showPhotoAlert()
-                                    }else{
-                                       if  !homeViewModel.checkInput(){
+                                    } else {
+                                        if !homeViewModel.checkInput() {
                                             homeViewModel.addEntry()
                                             FileManagementService.shared.savePhoto(capturedImage!)
                                         }
                                     }
-                                   
-                                      
+
                                 }) { Text("Save") }
                                     .frame(maxWidth: 112)
                                     .font(.system(size: 18))
@@ -145,7 +144,7 @@ struct HomeView: View {
                             }
                             .offset(y: 25)
                         }
-                    }//to close keyboard when tapping anything other than textfield
+                    } // to close keyboard when tapping anything other than textfield
                     .onTapGesture {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
@@ -153,22 +152,21 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            //check if the data was already submitted
+            // check if the data was already submitted
             homeViewModel.checkIfSubmitted()
-            //check if the name was already retrieved to not infinetely reload the page
+            // check if the name was already retrieved to not infinetely reload the page
             if !hasActionBeenPerformed {
                 homeViewModel.findUserName()
                 hasActionBeenPerformed = true
             }
         }
-         .alert(isPresented: $homeViewModel.showAlert) {
-             Alert(
-                 title: Text(homeViewModel.alertTitle ?? "Missing Information"),
-                 message: Text(homeViewModel.alertMessage ?? "Please fill out all fields and take a photo before submitting."),
-                 dismissButton: .default(Text("OK"))
-             )
-         }
-         
+        .alert(isPresented: $homeViewModel.showAlert) {
+            Alert(
+                title: Text(homeViewModel.alertTitle ?? "Missing Information"),
+                message: Text(homeViewModel.alertMessage ?? "Please fill out all fields and take a photo before submitting."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 

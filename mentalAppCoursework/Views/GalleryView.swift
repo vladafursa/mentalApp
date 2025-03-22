@@ -18,7 +18,7 @@ struct GalleryView: View {
                 ScrollView {
                     VStack {
                         VStack {
-                            //logo
+                            // logo
                             Image("appLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -26,23 +26,23 @@ struct GalleryView: View {
                                 .padding(.bottom, 40)
                             VStack {
                                 ZStack {
-                                    //title
+                                    // title
                                     Text("Your emotion galery")
                                         .font(.system(size: 22))
                                         .foregroundColor(.textColour)
                                 }.offset(y: -20)
                                 ZStack {
-                                    //grid of 3 columns
+                                    // grid of 3 columns
                                     LazyVGrid(columns: [.init(.adaptive(minimum: 100, maximum: .infinity), spacing: 3)]) {
                                         ForEach(imageURLs, id: \.self) { url in
                                             if let image = UIImage(contentsOfFile: url.path) {
-                                              //image
+                                                // image
                                                 Image(uiImage: image)
-                                                    .resizable()//resize
-                                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)//consume all space
-                                                    .aspectRatio(1, contentMode: .fit)//width and height are equal
+                                                    .resizable() // resize
+                                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity) // consume all space
+                                                    .aspectRatio(1, contentMode: .fit) // width and height are equal
                                                     .onTapGesture {
-                                                        //assign selected image an image
+                                                        // assign selected image an image
                                                         selectedImage = image
                                                     }
                                             }
@@ -55,10 +55,10 @@ struct GalleryView: View {
                         }
                     }
                 }
-                //show full image
+                // show full image
                 if let image = selectedImage {
                     ZStack {
-                        Color.black.opacity(0.8) //darke background
+                        Color.black.opacity(0.8) // darke background
                             .edgesIgnoringSafeArea(.all)
                             .onTapGesture { selectedImage = nil } // Close on tap
                         Image(uiImage: image)
@@ -70,7 +70,7 @@ struct GalleryView: View {
                         VStack {
                             HStack {
                                 Spacer()
-                                //close button
+                                // close button
                                 Button(action: { selectedImage = nil }) {
                                     Image(systemName: "xmark.circle.fill")
                                         .foregroundColor(.white)
@@ -84,7 +84,7 @@ struct GalleryView: View {
                 }
             }
         }
-        //load images
+        // load images
         .onAppear {
             imageURLs = FileManagementService.shared.getAllSavedImages()
         }
