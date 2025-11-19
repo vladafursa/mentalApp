@@ -1,6 +1,6 @@
 # Your Mental Health Assistant (iOS App)
 
-**A production‑ready iOS application for mental wellbeing tracking, designed to help users privately log emotions, reflect on their mood, and build healthier habits.**
+**A production‑ready iOS application for mental wellbeing tracking**
 ---
 ## Overview
 
