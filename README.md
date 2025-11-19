@@ -35,7 +35,7 @@ While the app does not carry any medical approach, there are contact details of 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/mental-health-assistant.git
+   git clone https://github.com/vladafursa/mentalApp.git
 
 
 ## Demo-video
